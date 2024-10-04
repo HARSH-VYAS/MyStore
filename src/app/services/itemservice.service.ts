@@ -14,6 +14,6 @@ export class ItemserviceService {
 
   getProductItems(): Observable<ProductItem[]>
   {
-      return this.http.get<ProductItem[]>("https://my-json-server.typicode.com/HARSH-VYAS/PhotosApp/productitems");
+      return this.http.get<ProductItem[]>("https://my-json-server.typicode.com/HARSH-VYAS/MyStore/productitems");
   }
 }

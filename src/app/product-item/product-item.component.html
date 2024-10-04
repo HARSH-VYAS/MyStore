@@ -1,1 +1,17 @@
-<p>product-item works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <img
+        src="{{item.url}}"
+        width="200"
+        height="200"
+        class="rounded float-left"/>
+      <ul class="list-group">
+        <li class="list-group-item">id: {{ item.id }}</li>
+        <li class="list-group-item">name: {{ item.name }}</li>
+        <li class="list-group-item">style : {{ item.price }}</li>
+        <li class="list-group-item">size : {{ item.description }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

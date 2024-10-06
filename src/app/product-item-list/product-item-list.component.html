@@ -1,3 +1,7 @@
-
-<app-product-item *ngFor="let item of items" [item]="item">
-</app-product-item>
+<div class="container product-container">
+  <div class="row">
+    <div class="col-sm product-index" *ngFor="let item of items">
+      <app-product-item [item]="item"> </app-product-item>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,11 @@
-<p>product-item-detail works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <app-product-item [item]="childItem">
+      </app-product-item>
+    </div>
+    <div class="col-sm float-center">
+        <div class="row detail-container"><p class="float-center">{{childItem.description}}</p></div>
+    </div>
+  </div>
+</div>

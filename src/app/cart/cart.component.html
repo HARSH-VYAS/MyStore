@@ -1,1 +1,22 @@
-<p>cart works!</p>
+<div class="container cart-container">
+    <div class="row" *ngFor="let item of cart">
+        <div class="col-sm">
+        </div>
+      <div class="col-sm">
+        <img
+          src="{{item.url}}"
+          width="200"
+          height="200"
+          class="rounded float-center"/>
+        <ul class="list-group">
+          <li class="list-group-item">name: {{ item.name }}</li>
+          <li class="list-group-item">price : {{ item.price }}</li>
+          <li class="list-group-item">Quantity<input type="text" value="{{item.selectedQuantity}}" [(ngModel)]="changedValue"/></li>
+          <p> Total Price : {{totalPrice}} </p>
+        </ul>
+      </div>
+      <div class="col-sm">
+    </div>
+    </div>
+  </div>
+

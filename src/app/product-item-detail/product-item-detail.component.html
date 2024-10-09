@@ -1,11 +1,17 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm">
+  <div class="row justify-content-center">
+    <div class="col-md-3 justify-content-between">
       <app-product-item [item]="childItem">
       </app-product-item>
     </div>
-    <div class="col-sm float-center">
+    <div class="col-md-1 ">
         <div class="row detail-container"><p class="float-center">{{childItem.description}}</p></div>
+    </div>
+  </div>
+  <br/>
+  <div class="row justify-content-center">
+    <div class="col-md-4 back-link">
+    <a routerLink="/">Back to Product List</a>
     </div>
   </div>
 </div>

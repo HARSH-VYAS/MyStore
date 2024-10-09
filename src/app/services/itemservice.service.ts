@@ -10,7 +10,8 @@ import { ProductItem } from '../models/ProductItem';
 })
 export class ItemserviceService {
 
-  defaultItem : ProductItem = {
+  defaultItem : ProductItem = 
+  {
     "id": 1,
     "name": "Book",
     "price": 9.99,
@@ -24,25 +25,41 @@ export class ItemserviceService {
   detailItem : BehaviorSubject<ProductItem> = new BehaviorSubject<ProductItem>(this.defaultItem);
   currentItem = this.detailItem.asObservable();
 
-
+  // Get Product Items from json place holder server
   getProductItems(): Observable<ProductItem[]>
   {
       return this.http.get<ProductItem[]>("https://my-json-server.typicode.com/HARSH-VYAS/MyStore/productitems");
   }
 
+  // Add cart Items from ProductList and Product detials pages.
   addCartItems(item:ProductItem)
   {
-    this.cart.unshift(item);
+    const index = this.cart.findIndex(obj => {
+      return obj.id === item.id;
+    });
+    if(index !==-1)
+    {
+      this.cart[index].selectedQuantity=item.selectedQuantity;
+    }
+    else
+      this.cart.unshift(item);
   }
 
+  // Get CartItems array
   getCartItems():ProductItem[]
   {
-
     return this.cart;
   }
 
+  //Get Item product details
   getItemProductDetail(item:ProductItem):void
   {
     this.detailItem.next(item);
+  }
+
+  // Cleanup cart Items after the checkout.
+  cleanUpCartItems():void
+  {
+    this.cart =[];
   }
 }

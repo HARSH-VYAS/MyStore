@@ -10,8 +10,8 @@
     </a>
 
     <ul class="list-group">
-      <li class="list-group-item">name: {{ item.name }}</li>
-      <li class="list-group-item">price : {{ item.price }}</li>
+      <li class="list-group-item justify-content-center">{{ item.name }}</li>
+      <li class="list-group-item justify-content-center">${{ item.price }}</li>
     </ul>
 
     <select class = "select-input" name="items" id="items" [(ngModel)]="selectedValue">

@@ -43,7 +43,7 @@ export class ProductItemComponent implements OnInit
   {
       this.item.selectedQuantity=this.selectedValue;
       this.itemService.addCartItems(this.item);
-      this.selectedValue=0;
+      this.selectedValue=1;
 
   }
 

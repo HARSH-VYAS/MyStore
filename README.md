@@ -1,6 +1,15 @@
 # MyStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
+This project represents a shopping cart where users can add upto 10 quantity of items for each product item available. It represents a complete front-end workflow implemented in Angular.
+
+Following features are available in this application
+Users are able to view
+1. All the product items and their price on a product list page. Which is the home page of this application
+2. Product Item detail when they click on the product image on the product item list page.
+3. Add Product-Item to cart when they select a quantity and click on add to cart button
+4. View all the items added to the cart and modify the quantity which will modify the total price of the cart.
+5. A Checkout-form which allows to add personal information and payment details.
+6. Once user clicks on submit button there will be a confirmation message shown on the page for the successful payment.
 
 ## Development server
 

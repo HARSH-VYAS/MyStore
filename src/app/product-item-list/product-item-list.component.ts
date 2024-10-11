@@ -26,5 +26,4 @@ export class ProductItemListComponent implements OnInit
     });
   }
 
-
 }

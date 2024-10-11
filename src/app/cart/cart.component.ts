@@ -17,7 +17,6 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
   cart: ProductItem[] = [];
   totalPrice: number = 0;
-
   // Cart checkout details
   firstName: string = '';
   lastName: string = '';
@@ -26,44 +25,57 @@ export class CartComponent implements OnInit {
 
   constructor(private itemService: ItemserviceService, private router: Router) {
     this.cart = itemService.getCartItems();
-    this.cart = this.cart.filter(item => item.id != 0);
   }
  
   ngOnInit(): void {
     this.getTotalPrice(this.cart);
   }
 
-  getTotalPrice(cart: ProductItem[]): void {
+  getTotalPrice(cart: ProductItem[]): void 
+  {
     cart.forEach(item => {
       if (Number.isNaN(item))
         throw new Error('Please enter a valid number');
-      this.totalPrice += item.price * item.selectedQuantity;
+      this.totalPrice += item.price * Number(item.selectedQuantity);
     });
   }
 
-  updateTotalPrice(): void {
+  updateTotalPrice(item:ProductItem): void 
+  {
     this.totalPrice = 0;
+    console.log(`for ${item.name} selected quantity is :   ${item.selectedQuantity}`);
+    if (item.selectedQuantity === null) {
+      // Do nothing if the input is empty
+      return;
+    }
+    if(Number(item.selectedQuantity) == 0)
+    {
+      alert('Are you sure you want to remove this item')
+      this.removeItem(item);
+
+    }
+     
     this.getTotalPrice(this.cart);
+  }
+
+  removeItem(item:ProductItem)
+  {
+    const index = this.cart.indexOf(item);
+    if (index > -1) {
+      // Remove the item from the array
+      this.cart.splice(index, 1);
+      alert(`${item.name} will be removed from the cart`);
+    }
+
   }
 
   checkout(): void {
 
     this.cardNumber = this.cardNumber.replace(/\D/g, "");
 
-    if (!this.cardNumber) {
-      throw new Error("Card number can not be empty");
-    }
-
     if (isNaN(Number(this.cardNumber))) {
       throw new Error("Card number should be a valid number");
     }
-
-    if (this.cardNumber.length < 13 || this.cardNumber.length > 19) {
-      throw new Error("Valid card number must be between length 13 and 19");
-    }
-
-    const currentName = this.firstName + " " + this.lastName;
-    if (this.cardName == currentName) {
       this.router.navigate(['/success'], {
         queryParams:
         {
@@ -72,11 +84,6 @@ export class CartComponent implements OnInit {
         }
       })
       .then(()=>this.cleanUpCart());
-      
-    }
-    else{
-      throw new Error("card name should be a valid card name" + this.cardName);
-    }
   }
 
   cleanUpCart(){
